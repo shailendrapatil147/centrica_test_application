@@ -1,0 +1,98 @@
+<div class="card m-3">
+  <h5 class="card-header">Add New Shop</h5>
+  <div class="card-body">
+      <form [formGroup]="fgAddNewShop" (ngSubmit)="addStore()">
+          <div class="row">
+              <div class="col mb-3">
+                  <label class="form-label">City</label>
+                  <select formControlName="cityId" class="form-control" [ngClass]="{ 'is-invalid': submitted && fcAddNewShop['cityId'].errors }">
+                      <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                  </select>
+                  <div *ngIf="submitted && fcAddNewShop['cityId'].errors" class="invalid-feedback">
+                      <div *ngIf="fcAddNewShop['cityId'].errors['required']">City is required</div>
+                  </div>
+              </div>
+              <div class="col-5 mb-3">
+                  <label class="form-label">Shop Name</label>
+                  <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && fcAddNewShop['name'].errors }" />
+                  <div *ngIf="submitted && fcAddNewShop['name'].errors" class="invalid-feedback">
+                      <div *ngIf="fcAddNewShop['name'].errors['required']">Shop Name is required</div>
+                  </div>
+              </div>
+              <div class="col-5 mb-3">
+                  <label class="form-label">Description</label>
+                  <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && fcAddNewShop['description'].errors }" />
+                  <div *ngIf="submitted && fcAddNewShop['description'].errors" class="invalid-feedback">
+                      <div *ngIf="fcAddNewShop['description'].errors['required']">Last Name is required</div>
+                  </div>
+              </div>
+          </div>
+          <div class="text-left">
+              <button class="btn btn-primary me-2">Save</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+<div class="card m-3">
+  <h5 class="card-header">Add User</h5>
+  <div class="card-body">
+      <form [formGroup]="fgAddNewUser" (ngSubmit)="addUser()">
+          <div class="row">
+              <div class="col-5 mb-3">
+                  <label class="form-label">User Name</label>
+                  <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': addNewUserSubmit && fcAddUserShop['name'].errors }" />
+                  <div *ngIf="addNewUserSubmit && fcAddUserShop['name'].errors" class="invalid-feedback">
+                      <div *ngIf="fcAddUserShop['name'].errors['required']">User Name is required</div>
+                  </div>
+              </div>
+          </div>
+          <div class="text-left">
+              <button class="btn btn-primary me-2">Save</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+<div class="card m-3">
+  <h5 class="card-header">Setup User Roles</h5>
+  <div class="card-body">
+      <form [formGroup]="fgAddNewUserRole" (ngSubmit)="addUserRole()">
+          <div class="row">
+              <div class="col mb-3">
+                  <label class="form-label">City</label>
+                  <select formControlName="cityId" class="form-control" [ngClass]="{ 'is-invalid': addNewUserRoleSubmit && fcAddNewUserRole['cityId'].errors }">
+                      <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                  </select>
+                  <div *ngIf="addNewUserRoleSubmit && fcAddNewUserRole['cityId'].errors" class="invalid-feedback">
+                      <div *ngIf="fcAddNewUserRole['cityId'].errors['required']">City is required</div>
+                  </div>
+              </div>
+
+              <div class="col mb-3">
+                <label class="form-label">User</label>
+                <select formControlName="userId" class="form-control" [ngClass]="{ 'is-invalid': addNewUserRoleSubmit && fcAddNewUserRole['userId'].errors }">
+                    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+                </select>
+                <div *ngIf="addNewUserRoleSubmit && fcAddNewUserRole['userId'].errors" class="invalid-feedback">
+                    <div *ngIf="fcAddNewUserRole['userId'].errors['required']">User is required</div>
+                </div>
+            </div>
+
+
+            <div class="col mb-3">
+              <label class="form-label">Roles</label>
+              <select formControlName="roleId" class="form-control" [ngClass]="{ 'is-invalid': addNewUserRoleSubmit && fcAddNewUserRole['roleId'].errors }">
+                  <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+              </select>
+              <div *ngIf="addNewUserRoleSubmit && fcAddNewUserRole['roleId'].errors" class="invalid-feedback">
+                  <div *ngIf="fcAddNewUserRole['roleId'].errors['required']">Role is required</div>
+              </div>
+          </div>
+          </div>
+          <div class="text-left">
+              <button class="btn btn-primary me-2">Save</button>
+          </div>
+      </form>
+  </div>
+</div>
